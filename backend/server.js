@@ -10,11 +10,9 @@ app.use(cors());
 // Connexion à MongoDB Atlas
 const uri = "mongodb+srv://hindelmoussaoui:hindelmoussaoui@cluster0.omwqk.mongodb.net/shopDB?retryWrites=true&w=majority";
 mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
 })
-  .then(() => console.log("🟢 Connecté à MongoDB"))
-  .catch(err => console.error("🔴 Erreur de connexion MongoDB:", err));
+    .then(() => console.log("🟢 Connecté à MongoDB"))
+    .catch(err => console.error("🔴 Erreur de connexion MongoDB:", err));
 
 // Modèle Movie
 const movieSchema = new mongoose.Schema({
@@ -35,34 +33,34 @@ app.get("/api/tmdb/movies", async (req, res) => {
         `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=fr-FR`
     );
     res.json(response.data.results);
-  } catch (error) {
+    } catch (error) {
     console.error("Erreur lors de la récupération des films:", error);
     res.status(500).json({ error: "Erreur lors de la récupération des films." });
-  }
+    }
 });
 
 // Ajouter un film à MongoDB
 app.post("/api/movies", async (req, res) => {
-  try {
+    try {
     const { title, description, posterURL, note } = req.body;
     const movie = new Movie({ title, description, posterURL, note });
     await movie.save();
     res.status(201).json(movie);
-  } catch (error) {
+    } catch (error) {
     console.error("Erreur lors de l'ajout du film:", error);
     res.status(500).json({ error: "Erreur lors de l'ajout du film." });
-  }
+    }
 });
 
 // Récupérer les films stockés dans MongoDB
 app.get("/api/movies", async (req, res) => {
-  try {
+    try {
     const movies = await Movie.find();
     res.json(movies);
-  } catch (error) {
+    } catch (error) {
     console.error("Erreur lors de la récupération des films stockés:", error);
     res.status(500).json({ error: "Erreur lors de la récupération des films stockés." });
-  }
+    }
 });
 
 // Lancement du serveur
