@@ -20,6 +20,7 @@ const movieSchema = new mongoose.Schema({
     description: String,
     posterURL: String,
     note: Number,
+    trailerURL: String,
 });
 const Movie = mongoose.model("Movie", movieSchema);
 
@@ -42,8 +43,8 @@ app.get("/api/tmdb/movies", async (req, res) => {
 // Ajouter un film à MongoDB
 app.post("/api/movies", async (req, res) => {
     try {
-    const { title, description, posterURL, note } = req.body;
-    const movie = new Movie({ title, description, posterURL, note });
+    const { title, description, posterURL, note, trailerURL } = req.body;
+    const movie = new Movie({ title, description, posterURL, note, trailerURL });
     await movie.save();
     res.status(201).json(movie);
     } catch (error) {
