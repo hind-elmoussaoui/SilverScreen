@@ -5,17 +5,25 @@ const AddMovieForm = ({ onAdd }) => {
     const [description, setDescription] = useState("");
     const [posterURL, setPosterURL] = useState("");
     const [note, setNote] = useState("");
+    const [videoURL, setVideoURL] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title || !description || !posterURL || !note) return;
+        if (!title || !description || !posterURL || !note ||  !videoURL) return;
 
-        onAdd({ title, description, posterURL, note: Number(note) });
+        onAdd({ 
+            title, 
+            description, 
+            posterURL, 
+            note: Number(note), 
+            videoURL // Ajouter le lien de la bande-annonce
+        });
 
         setTitle("");
         setDescription("");
         setPosterURL("");
         setNote("");
+        setVideoURL("");
     };
 
     return (
@@ -24,9 +32,10 @@ const AddMovieForm = ({ onAdd }) => {
             <input className="p-2 border" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
             <input className="p-2 border" type="text" placeholder="Image URL" value={posterURL} onChange={(e) => setPosterURL(e.target.value)} />
             <input className="p-2 border" type="number" placeholder="Note" value={note} onChange={(e) => setNote(e.target.value)} />
+            <input className="p-2 border" type="text" placeholder="Lien de la bande-annonce YouTube" value={videoURL} onChange={(e) => setVideoURL(e.target.value)} />
             <button type="submit" className="bg-blue-500 text-white p-2 rounded">Ajouter</button>
         </form>
     );
 };
 
-export default AddMovieForm;
+export default AddMovieForm; 

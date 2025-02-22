@@ -9,7 +9,7 @@ const AddMovie = () => {
         axios.post("http://localhost:5000/api/movies", newMovie)
             .then(() => {
                 console.log("Film ajouté !");
-                navigate("/"); // Retourne à la page d'accueil
+                navigate("/"); // Retour à l'accueil
             })
             .catch((err) => console.error("Erreur lors de l'ajout du film :", err));
     };
