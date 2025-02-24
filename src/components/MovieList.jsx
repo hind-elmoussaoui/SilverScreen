@@ -13,7 +13,10 @@ const MovieList = ({ movies, favorites, onToggleFavorite }) => {
                     />
                 ))
             ) : (
-                <p>Aucun film trouvé.</p>
+                <svg viewBox="25 25 50 50" class="container">
+                    <circle cx="50" cy="50" r="20" class="loader"></circle>
+                </svg>
+
             )}
         </div>
     );

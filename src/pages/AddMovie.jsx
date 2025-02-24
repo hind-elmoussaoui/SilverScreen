@@ -1,6 +1,7 @@
 import AddMovieForm from "../components/AddMovieForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar"
 
 const AddMovie = () => {
     const navigate = useNavigate();
@@ -15,8 +16,11 @@ const AddMovie = () => {
     };
 
     return (
+        <div>
+            <Navbar/>
         <div className="max-w-2xl mx-auto mt-8">
             <AddMovieForm onAdd={handleAddMovie} />
+        </div>
         </div>
     );
 };
