@@ -15,10 +15,11 @@ export const FavoritesProvider = ({ children }) => {
     }, [favorites]);
 
     const handleToggleFavorite = (movie) => {
+        console.log("Film ajouté/supprimé des favoris :", movie);
         setFavorites((prev) =>
             prev.some((fav) => fav.id === movie.id)
                 ? prev.filter((fav) => fav.id !== movie.id) // Supprimer si déjà en favoris
-                : [...prev, movie] // Ajouter sinon
+                : [...prev, { ...movie }] // Ajouter sinon
         );
     };
 

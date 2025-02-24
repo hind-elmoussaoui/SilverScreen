@@ -45,7 +45,7 @@ const MovieDetails = () => {
 
                 <div className="ml-4">
                     <h1 className="text-3xl font-bold">{movie.title}</h1>
-                    <p className="mt-2 text-gray-700">{movie.description || "Aucune description disponible."}</p>
+                    <p className="mt-2 text-gray-700">{movie.overview || "Aucune description disponible."}</p>
 
                     <button 
                         onClick={() =>  handleToggleFavorite(movie)}
