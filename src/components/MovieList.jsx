@@ -1,5 +1,5 @@
 import MovieCard from "./MovieCard";
-import Loader from "./loader";
+import Loader from "../Loader";
 
 const MovieList = ({ movies, favorites, onToggleFavorite }) => {
     return (
